@@ -1,0 +1,63 @@
+{
+  "env": [
+    {
+      "name": ["Asterix-MinAtar-v0", "Breakout-MinAtar-v0", "Seaquest-MinAtar-v0", "SpaceInvaders-MinAtar-v0"],
+      "max_episode_steps": [10000],
+      "input_type": ["pixel"]
+    }
+  ],
+  "agent": [
+    {
+      "name": ["MaxminDQN"],
+      "total_networks_num": [8],
+      "update_networks_num": [2],
+      "networks_num": [-1],
+      "adaptive": [true]
+    }
+  ],
+  "train_steps": [5e6],
+  "test_per_episodes": [-1],
+  "device": ["cuda"],
+  "feature_dim": [128],
+  "hidden_layers": [[]],
+  "memory_type": ["Replay"],
+  "memory_size": [1e5],
+  "exploration_type": ["LinearEpsilonGreedy"],
+  "exploration_steps": [5e3],
+  "epsilon_steps": [1e5],
+  "epsilon_start": [1.0],
+  "epsilon_end": [0.1],
+  "epsilon_decay": [0.999],
+  "loss": ["SmoothL1Loss"],
+  "optimizer": [
+    {
+      "name": ["RMSprop"],
+      "kwargs": [{"lr": [3e-4], "alpha": [0.95], "centered": [true], "eps": [0.01]}]
+    }
+  ],
+  "eta": [
+    {
+      "init_d": [2],
+      "min_num_nets": [2],
+      "update_d_interval": [50000],
+      "update_d_gamma": [0.999],
+      "Q_G_eval_interval": [10],
+      "Q_G_n_per_episode": [20],
+      "Q_G_n_episodes": [200],
+      "Q_G_rollout_length": [200],
+      "sampling_scheme": ["uniform"]
+    }
+  ],
+  "batch_size": [32],
+  "display_interval": [1000],
+  "save_checkpoints": [true],
+  "checkpoint_freq": [100000],
+  "rolling_score_window": [{"Train": [100], "Test": [10]}],
+  "discount": [0.99],
+  "seed": [10, 20, 30, 40],
+  "show_tb": [true],
+  "gradient_clip": [-1],
+  "target_network_update_frequency": [1000],
+  "network_update_frequency": [1],
+  "generate_random_seed": [true]
+}
